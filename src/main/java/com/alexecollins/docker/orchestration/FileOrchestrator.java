@@ -73,7 +73,9 @@ public class FileOrchestrator {
 		for (String file : conf.getPackaging().getAdd()) {
 			File fileEntry = new File(rootDir, filter(file));
 			copyFileEntry(destDir, fileEntry);
-			Filters.filter(fileEntry, filter, properties);
+
+			File destFile = new File(destDir, fileEntry.getName());
+			Filters.filter(destFile, filter, properties);
 		}
 
         return destDir;
